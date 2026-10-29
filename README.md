@@ -11,3 +11,11 @@ The core interaction loop:
 
 ## Intended user
 Anyone who wants a moment of quiet wonder — a student taking a break, a city dweller who misses dark skies, or someone curious about light pollution. No instructions needed: the interaction is immediately intuitive.
+
+## Features
+Three-layer canvas system
+- Background layer: 400 twinkling stars (some with diffraction spikes), drifting nebula clouds, and random meteors — the hidden beauty beneath the light.
+- Foreground layer: Glowing light pollution particles that obscure the sky. They respond to mouse movement with physics (velocity, damping, boundary wrapping).
+- Weather layer: Clouds, fog, rain drops, and lightning bolts — overlay effects that transform the sky's atmosphere.
+
+## Weather system
