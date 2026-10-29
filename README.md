@@ -77,6 +77,7 @@ As the user reveals more stars, short italic messages appear on the left side of
 Open index.html in any modern browser (Chrome, Firefox, Safari, Edge).
 ### Option 2: Serve locally
 python3 -m http.server 8000
+
 Then visit http://localhost:8000.
 
 ## Known limitations
