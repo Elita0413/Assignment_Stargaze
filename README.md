@@ -89,3 +89,11 @@ Then visit http://localhost:8000.
 
 ## Screenshot
 <img width="1512" height="982" alt="截屏2026-10-29 11 15 20" src="https://github.com/user-attachments/assets/beeb2a1c-6664-4bf0-8c4b-1aadd8b96a9e" />
+
+## Credits
+- Light pollution statistics in the narrative messages are approximate, drawn from widely cited sources: the 2016 "World Atlas of Artificial Night Sky Brightness" (Falchi et al.) and the International Dark-Sky Association.
+- Diffraction spike rendering is inspired by the visual effect seen in long-exposure astrophotography.
+- Ambient sound is synthesised entirely with the Web Audio API — no external audio files. The pentatonic chime approach is a common technique in generative music.
+- Fonts: Cormorant Garamond by Christian Thalmann (display) and Space Grotesk by Florian Karsten (UI), via Google Fonts.
+- Weather icons in the control panel are simple inline SVG, drawn by hand for this project.
+- All code is original for this assignment. No course examples were extended.
