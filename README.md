@@ -1,4 +1,4 @@
-## STARGAZE — Reveal the Hidden Sky
+# STARGAZE — Reveal the Hidden Sky
 An interactive experience about light pollution. A layer of glowing particles represents the city's light pollution — a veil that hides the night sky. Move your cursor to part the light, revealing the stars beneath. Click to scatter it. Watch shooting stars drift by. Switch between four weather conditions — clear, cloudy, foggy, stormy — each transforming the sky's atmosphere. Turn on the ambient soundscape for a procedurally generated drone that deepens the meditative mood. As you reveal more of the sky, narrative fragments appear — reminders of what we've lost to light pollution.
 No frameworks. No dependencies. No audio files. Pure HTML5 Canvas, vanilla JavaScript, and the Web Audio API.
 
@@ -18,7 +18,7 @@ Three-layer canvas system
 - Foreground layer: Glowing light pollution particles that obscure the sky. They respond to mouse movement with physics (velocity, damping, boundary wrapping).
 - Weather layer: Clouds, fog, rain drops, and lightning bolts — overlay effects that transform the sky's atmosphere.
 
-# Weather system
+### Weather system
 Four weather conditions, each changing the sky's mood and star visibility:
 | Weather | Visual effects | Star visibility |
 | :--- | :--- | :--- |
@@ -29,16 +29,47 @@ Four weather conditions, each changing the sky's mood and star visibility:
 
 Weather isn't just decorative — it changes how difficult it is to see the stars even after parting the light pollution. Stormy weather creates a double challenge: you must clear the city light and contend with the storm.
 
-# Ambient sound (Web Audio API)
+### Ambient sound (Web Audio API)
 A procedurally generated soundscape — no audio files needed:
 - Drone pad: Two detuned sine oscillators (110Hz) through a lowpass filter, with a slow LFO modulating the gain for a breathing effect.
 - Wind: White noise through a bandpass filter with a slow LFO sweeping the filter frequency — a gentle, ever-shifting breeze.
 - Star chimes: When a star is revealed, a sine wave plays a note from a pentatonic scale (C major pentatonic, C5–C6). Higher stars play higher notes. Chimes are throttled to ~8 per second to avoid clutter.
 - Toggle: Click the sound icon in the control panel or press S. The master gain fades in/out smoothly over 1.5 seconds.
 
-# Three interaction modes
+### Three interaction modes
 | Mode | What happens |
 | :--- | :--- |
 | **Part** | Light particles are pushed away from the cursor, revealing stars beneath. The default "parting the veil" interaction.|
 | **Gather** | Light particles gather toward the cursor, creating a dense glow. The opposite effect — you're collecting the light.|
 | **Storm** |	Chaotic scattering — particles fly in random directions. Aggressive clearing.|
+
+### Star revelation system
+Stars have a revealAlpha that smoothly transitions between hidden and visible. When light particles near a star disperse (their combined opacity drops below a threshold), the star fades in. When light returns, the star fades out. This creates a living, breathing relationship between the two layers.
+
+### Diffraction spikes
+Brighter stars (~8% of all stars) display cross-shaped diffraction spikes — the visual effect you see in telescope photographs. This adds a touch of astronomical realism.
+
+### Narrative system
+As the user reveals more stars, short italic messages appear on the left side of the screen at thresholds (5%, 15%, 30%, 50%, 70% cleared):
+- "80% of the world lives under a light-polluted sky…"
+- "A child born today may never see the Milky Way."
+- "Light pollution grows 2% every year. The stars retreat."
+- "In a truly dark sky, you'd see 2,500 stars. How many can you find?"
+- "Every star was always there. We just forgot to look up."
+
+### Shooting stars (meteors)
+- Random meteors occasionally streak across the sky (low probability, max 2 at a time).
+- The Wish button lets the user manually trigger a meteor — a playful nod to the tradition of making a wish on a shooting star.
+
+### Technical highlights
+- Three <canvas> layers with independent rendering — background (stars/nebula/meteors), foreground (light pollution), and weather (clouds/fog/rain/lightning)
+- destination-out compositing on the foreground canvas for motion-blur trails
+- globalCompositeOperation = 'lighter' for additive glow on background and foreground layers
+- Web Audio API: detuned oscillators, filtered noise, LFO modulation, per-star chime synthesis
+- DevicePixelRatio-aware for retina displays
+- Bounded arrays (shockwaves max 12, meteors max 2, lightning bolts auto-expire) — handles repeated interaction without memory issues
+- Touch support for mobile
+- prefers-reduced-motion support
+- Keyboard shortcuts: 1–3 for modes, R to restore light, W for a wish, S to toggle sound, Space for shockwave
+
+## How to run
