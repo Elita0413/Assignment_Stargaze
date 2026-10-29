@@ -18,7 +18,7 @@ Three-layer canvas system
 - Foreground layer: Glowing light pollution particles that obscure the sky. They respond to mouse movement with physics (velocity, damping, boundary wrapping).
 - Weather layer: Clouds, fog, rain drops, and lightning bolts — overlay effects that transform the sky's atmosphere.
 
-## Weather system
+# Weather system
 Four weather conditions, each changing the sky's mood and star visibility:
 | Weather | Visual effects | Star visibility |
 | :--- | :--- | :--- |
@@ -29,11 +29,16 @@ Four weather conditions, each changing the sky's mood and star visibility:
 
 Weather isn't just decorative — it changes how difficult it is to see the stars even after parting the light pollution. Stormy weather creates a double challenge: you must clear the city light and contend with the storm.
 
-## Ambient sound (Web Audio API)
+# Ambient sound (Web Audio API)
 A procedurally generated soundscape — no audio files needed:
 - Drone pad: Two detuned sine oscillators (110Hz) through a lowpass filter, with a slow LFO modulating the gain for a breathing effect.
 - Wind: White noise through a bandpass filter with a slow LFO sweeping the filter frequency — a gentle, ever-shifting breeze.
 - Star chimes: When a star is revealed, a sine wave plays a note from a pentatonic scale (C major pentatonic, C5–C6). Higher stars play higher notes. Chimes are throttled to ~8 per second to avoid clutter.
 - Toggle: Click the sound icon in the control panel or press S. The master gain fades in/out smoothly over 1.5 seconds.
 
-## Three interaction modes
+# Three interaction modes
+| Mode | What happens |
+| :--- | :--- |
+| **Part** | Light particles are pushed away from the cursor, revealing stars beneath. The default "parting the veil" interaction.|
+| **Gather** | Light particles gather toward the cursor, creating a dense glow. The opposite effect — you're collecting the light.|
+| **Storm** |	Chaotic scattering — particles fly in random directions. Aggressive clearing.|
