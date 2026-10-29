@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html data-page-node-id="HmRyDuFrZVwLdYzNvoVovV" lang="en">
+<head data-page-node-id="EtPs21uWEmQyK43NfmqyEV">
+<script data-page-node-id="J5QZRUmumviKhUDOrzG8bH" src="/page/page_comm/inject.js"></script>
+  <meta data-page-node-id="tteA8fh6N6zyzefA9HTZfr" charset="UTF-8">
+  <meta data-page-node-id="qbAJjOE0Fu0PZmR1AOxYkx" content="width=device-width, initial-scale=1.0" name="viewport">
+  <title data-page-node-id="z54QRuFCTm6o2GrIuSMNwV" data-pnid-children="xfnmRxjjTcRtZ9BzqE32CN">STARGAZE — Reveal the Hidden Sky</title>
+  <link data-page-node-id="dTp3vz2NRZj3xlexCQRDd3" href="style.css" rel="stylesheet">
+  <link data-page-node-id="hVxSJIBaC0L4de4nBNQQA5" href="https://fonts.googleapis.com" rel="preconnect">
+  <link data-page-node-id="fMMaWQog3TmFz7QHekT0EC" crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link data-page-node-id="CGlVPzVewz6uMTeXmg2h3w" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+</head>
+<body data-page-node-id="koNMa6w8p2oi92s099jHYS">
+
+  <!--pnid:zJDnyXy27bp8fMs4rwQWGV--><!-- ====== Canvas layers ====== -->
+  <!--pnid:l2HwwhVL8QeKls6K62SfLQ--><!-- Background: deep space + stars + weather effects -->
+  <canvas data-page-node-id="2H4gdQErV07l0DbYXtQQVY" id="bg-canvas"></canvas>
+  <!--pnid:8kmjy4grb6PsrMU8rukVgP--><!-- Foreground: light pollution particles -->
+  <canvas data-page-node-id="3kBGqb8rbPXRSOT218kZ2i" id="fg-canvas"></canvas>
+  <!--pnid:CLjbW5eSPOtBkIvHMnPX6o--><!-- Weather overlay: clouds, fog, rain, lightning -->
+  <canvas data-page-node-id="WBxfXmESizHTHSwF01Hz8O" id="weather-canvas"></canvas>
+
+  <!--pnid:57w0AdZV1raOGSzZpSJFyr--><!-- ====== Intro overlay ====== -->
+  <div data-page-node-id="haNUMqHeuvB2yLOSm1VM7L" class="overlay" id="intro">
+    <div data-page-node-id="E9RVKFn02ErQUGaqtwnUHU" class="intro-content">
+      <div data-page-node-id="JUL5s1mBx4dtOiarVyY9vC" class="intro-stars"></div>
+      <h1 data-page-node-id="oejxsWSF3TT0UF025Iyilm" class="intro-title"><!--pnid:TRb0PLFAGxQSC7d6HFutJf-->STARGAZE</h1>
+      <p data-page-node-id="hNSDWH3bexNWc64qkUoGyn" class="intro-subtitle"><!--pnid:tFwOCykQT0vGjlpt8W9I82-->Reveal the hidden sky</p>
+      <div data-page-node-id="dOou7T7ncVD2lpyJbjsrlf" class="intro-quote">
+        <p data-page-node-id="KSyxgrMQzRI5P0OBrfhI2X"><!--pnid:hyOsceZgobV1CrSBHOcYGU-->"We are drowning in light, and blind to the stars."</p>
+      </div>
+      <p data-page-node-id="qXZS2Tu7FwYDsoc1eVjTRq" class="intro-desc"><!--pnid:Ye26F1yODYPh4LDEQ3sVNO-->
+        The city glows so bright we've forgotten what darkness reveals.<br data-page-node-id="3HolHaIldIgUfCFrOKWZ02"><!--pnid:CIpwGxxttckvTSlZS53II7-->
+        Move your cursor to part the light.<br data-page-node-id="UxtcVV7eXskOR1xCkSKIih"><!--pnid:YgEvcmqi3BUJbgElMmY43q-->
+        Click to scatter it.<br data-page-node-id="IbTHqZ4pvqepeA19iEFLzv"><!--pnid:KjgYEoLKHBvqFc9unp8spC-->
+        Find the stars hidden beneath.
+      </p>
+      <button data-page-node-id="mZBQMfMByjlzLriHl3SVBH" class="enter-btn" id="enter-btn"><!--pnid:QkZNmSW9QqBfvg75EKY4p0-->Look up</button>
+    </div>
+  </div>
+
+  <!--pnid:dcPLJ35cEe06aLTvI5tGJE--><!-- ====== HUD ====== -->
+  <div data-page-node-id="ZmdR1pCvHTm61z7N8V8EkG" class="hud hidden" id="hud">
+
+    <!--pnid:uwxd5LkHPg0cRCJgmPbMvT--><!-- Top bar -->
+    <div data-page-node-id="wRsXuEKImMIxclABHhuvY5" class="hud-top">
+      <div data-page-node-id="anaBU3F7aDgf09C9XPMN9K" class="hud-brand">
+        <span data-page-node-id="6tcvRMOUaCQZ4dmzomCmCO" class="brand-mark"></span>
+        <span data-page-node-id="xlLil7QCfjP1pV3aqgj0El" class="brand-name"><!--pnid:9IFeIK5DfyCtgyEpiQQ2IR-->STARGAZE</span>
+      </div>
+      <div data-page-node-id="D7q6p0VNI4HwbbdyE6BYBP" class="hud-stats">
+        <div data-page-node-id="PFbgJfvaPzz66tP8a3KqPe" class="stat">
+          <span data-page-node-id="jdtTX9RU4TPcEEnFNg10hx" class="stat-label"><!--pnid:NISeyIkOGWxXCylHZbGKsS-->Stars Revealed</span>
+          <span data-page-node-id="JY3i0M0QEG6l6olZ75avLy" class="stat-value" id="stat-stars"><!--pnid:hosUE8TPhGFnBC9az1Nu4r-->0</span>
+        </div>
+        <div data-page-node-id="Z5g9Y4gFS9rNNdVrNPurxY" class="stat">
+          <span data-page-node-id="1UTXsycAD4OXYHvLKUWbxK" class="stat-label"><!--pnid:tEnhd0xPqA4Gg7LzOZUiyx-->Sky Cleared</span>
+          <span data-page-node-id="251y7Fp6EBiicDxuthNLns" class="stat-value" id="stat-cleared"><!--pnid:EIdIwHyAhUwWRaZTDAxAnY-->0%</span>
+        </div>
+        <div data-page-node-id="7kRGyhpUpoAYLAAWS9U9EY" class="stat">
+          <span data-page-node-id="h4em2yf17NiaEiSYarTDtx" class="stat-label"><!--pnid:DOORoDsNZLte3K3m9x73dJ-->FPS</span>
+          <span data-page-node-id="XtKa8GS1Sy3GepPzMp1ubX" class="stat-value" id="stat-fps"><!--pnid:9gjVDvwywp7DSDnr7QTCDo-->0</span>
+        </div>
+      </div>
+    </div>
+
+    <!--pnid:nSBM1LOormQPnQei1RdQK5--><!-- Side message (narrative) -->
+    <div data-page-node-id="F9o1kolUUCEdjRPmGDwxUu" class="narrative hidden" id="narrative">
+      <p data-page-node-id="QMD4WMsNELnxTtRtciFdyK" id="narrative-text"></p>
+    </div>
+
+    <!--pnid:THMIP9RjhxphdEvQJhTQtB--><!-- Bottom controls -->
+    <div data-page-node-id="eObjMpTUw6cSDB7wYwoLc7" class="hud-bottom">
+      <div data-page-node-id="tD060DSgHsaiRA3ul8THWy" class="control-panel">
+
+        <!--pnid:BA311uQPvfbTqfX8zVm6UU--><!-- Mode -->
+        <div data-page-node-id="A4mMmyNwuazdotJDmdWdNY" class="ctrl-group">
+          <label data-page-node-id="im81seQPwTnZUnmZXQlFhZ" class="ctrl-label"><!--pnid:ZdnIPj4vOHvL1MEGM3jZ7f-->Interaction</label>
+          <div data-page-node-id="YN9tbd5COvSzLUzdRri3rr" class="mode-buttons">
+            <button data-page-node-id="ZOSs3VB5QUGX8Fm8k99H5X" class="mode-btn active" data-mode="part"><!--pnid:mEDEvf0KFcb7NheM5TqyVb-->Part</button>
+            <button data-page-node-id="vBi9oaMsu6jkazla2t4Xue" class="mode-btn" data-mode="gather"><!--pnid:xzvz4L2OMpqYRJVV4PgaKy-->Gather</button>
+            <button data-page-node-id="XTGQMpZG6dbI1b6WsvaxOA" class="mode-btn" data-mode="storm"><!--pnid:ys9E1QqqeUFuyTmmOnNpzc-->Storm</button>
+          </div>
+        </div>
+
+        <!--pnid:W9z6H2o3AkUBxTeDSK2YIF--><!-- Light density -->
+        <div data-page-node-id="X7vg67YzYfEv6bFIP9dOMh" class="ctrl-group">
+          <label data-page-node-id="xfPoRlNqdpk2Oghvp3DzoS" class="ctrl-label"><!--pnid:nv0g01uGyO1DvKVUIWNNkf-->Light Pollution <span data-page-node-id="pqMy3qXBz6wXWs6jlSaCNS" class="ctrl-value" id="density-value"><!--pnid:pHNRvpE5VU9nK5i46lTvdO-->320</span></label>
+          <input data-page-node-id="oJp16VEBljzTcRpuJ3Hn1E" id="density-slider" max="600" min="80" step="10" type="range" value="320">
+        </div>
+
+        <!--pnid:j3dGRLpthEpVleH9y7PHIX--><!-- Weather -->
+        <div data-page-node-id="qJOxeoydZTpuzLLOE2fkXJ" class="ctrl-group">
+          <label data-page-node-id="PjD7BhzGmzkntuTmV5Ae5Z" class="ctrl-label"><!--pnid:lnsUo5TtMsc9sHpGbUo3iS-->Weather</label>
+          <div data-page-node-id="vo9ice15MBWHMCCALTutPq" class="weather-row">
+            <button data-page-node-id="7qaJKmv9HfcI6Z1eVUdaCa" class="weather-btn active" data-weather="clear" title="Clear Night">
+              <svg data-page-node-id="wsb1PmJqpYJLGZMHDxhdYN" height="18" viewBox="0 0 24 24" width="18"><path data-page-node-id="ix2OXjrainZ4uw3uK3A9sc" d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z M12 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor"/></svg>
+              <span data-page-node-id="dLmI9uEc3QGElT1J7Qqb0P"><!--pnid:PPN6jAznn33eRPTWfD8Hmv-->Clear</span>
+            </button>
+            <button data-page-node-id="WtcbXGVjPWCnUuGWkcaUtG" class="weather-btn" data-weather="cloudy" title="Cloudy">
+              <svg data-page-node-id="aBbEftRE2sBWkj55UOiBjF" height="18" viewBox="0 0 24 24" width="18"><path data-page-node-id="ImZYUbR2tIyjrFJr1juAWc" d="M6 14a4 4 0 0 1 0-8 5 5 0 0 1 9.9-1 4 4 0 0 1 .1 8z" fill="currentColor"/></svg>
+              <span data-page-node-id="U0rfH1oTCNPkUinRgWnQTD"><!--pnid:6lhb2qLc5S1C8KjX2I9PCP-->Cloudy</span>
+            </button>
+            <button data-page-node-id="btupnBpkKV4KzPhSxAPOAf" class="weather-btn" data-weather="foggy" title="Foggy">
+              <svg data-page-node-id="58csW9iQEqHgEiac9DeN8E" height="18" viewBox="0 0 24 24" width="18"><path data-page-node-id="i8lNJsmSQKotPepsgBhqOC" d="M3 9h18v1.5H3zm0 4h18v1.5H3zm0 4h14v1.5H3z" fill="currentColor"/></svg>
+              <span data-page-node-id="8QnJlYnGMNQ3d8dzQIQvOU"><!--pnid:h3s6IneMTAGS31SjZ4GJj7-->Foggy</span>
+            </button>
+            <button data-page-node-id="bSxu2t8tNG8HOR9wNgfVa1" class="weather-btn" data-weather="stormy" title="Stormy">
+              <svg data-page-node-id="wDXV64KyzNyGuucvLvnYhp" height="18" viewBox="0 0 24 24" width="18"><path data-page-node-id="lnru8aOyapBV5UhyTl4CGj" d="M6 14a4 4 0 0 1 0-8 5 5 0 0 1 9.9-1 4 4 0 0 1 .1 8zm3-1l4-6-1 4h3l-4 6 1-4z" fill="currentColor"/></svg>
+              <span data-page-node-id="PF0KlNSK8tEliW5jKxoLn5"><!--pnid:3WIhyjPkXcvyt2QibMzUId-->Storm</span>
+            </button>
+          </div>
+        </div>
+
+        <!--pnid:B2oxTnaTnmzfBG4ObAd5Rr--><!-- Actions -->
+        <div data-page-node-id="39iGTYdGT9zp8XttE0La6u" class="ctrl-group ctrl-actions">
+          <button data-page-node-id="8dzdrufGi3sPwAsVHzFkyO" class="action-btn sound-off" id="sound-btn" title="Toggle ambient sound">
+            <svg data-page-node-id="ZVLfaf38vax5vDtuZMZ968" height="14" viewBox="0 0 24 24" width="14"><path data-page-node-id="hWlRo5YoF9fByNMd2t91sX" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z" fill="currentColor"/></svg>
+          </button>
+          <button data-page-node-id="91F7ZyRt9yHsJgePQLQ5z2" class="action-btn" id="reset-btn"><!--pnid:7oTpuNq0arVJIQ9XpyFRd9-->Restore Light</button>
+          <button data-page-node-id="ltnZQMDjpPBKFa0rMAKKWt" class="action-btn" id="meteor-btn"><!--pnid:56owbOgpBqwTRNCwTo0Enw-->Wish</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!--pnid:SFRBpgwdRaNe1npYHpN7cb--><!-- Hint -->
+    <div data-page-node-id="Ng6FDeYCiLoyty6MEm6YSP" class="hud-hint" id="hud-hint">
+      <span data-page-node-id="rG1tDKdNLAKbrEQUaYDKx7"><!--pnid:TtGbpvxAVBA02rBL63rTY7-->Move to part the light · Click to scatter</span>
+    </div>
+  </div>
+
+  <!--pnid:5h72QmIZYwPgi8gOmv5wVd--><!-- Toast -->
+  <div data-page-node-id="8onLACDGLX5ADyBeBGeg5g" class="toast hidden" id="toast"></div>
+
+  <script data-page-node-id="gwtMkCUaP2B8FDGAj8xn6w" src="script.js"></script>
+</body>
+</html>
