@@ -73,3 +73,19 @@ As the user reveals more stars, short italic messages appear on the left side of
 - Keyboard shortcuts: 1–3 for modes, R to restore light, W for a wish, S to toggle sound, Space for shockwave
 
 ## How to run
+### Option 1: Open the file
+Open index.html in any modern browser (Chrome, Firefox, Safari, Edge).
+### Option 2: Serve locally
+python3 -m http.server 8000
+Then visit http://localhost:8000.
+
+## Known limitations
+- Performance depends on light density and screen size. With 600 particles on a large display, the per-frame star-light proximity check may drop below 60fps. Reduce density if needed.
+- The star revelation check is O(stars × nearby light particles). It uses early-exit optimisation but is not spatially indexed — a known trade-off for code clarity.
+- Stars only reveal when light particles near them disperse. If you clear light from one side of the screen, stars on the other side remain hidden until you clear there too.
+- Weather affects star visibility multiplicatively — in stormy weather, even fully "revealed" stars appear dim because of the cloud cover. This is intentional (the weather is part of the challenge) but may surprise users expecting full brightness.
+- Audio requires a user gesture to start (browser autoplay policy). Click the sound icon or press S after entering the experience.
+- No persistence — refreshing resets the experience. This is intentional: each session is a fresh encounter with the veil.
+
+## Screenshot
+<img width="1512" height="982" alt="截屏2026-10-29 11 15 20" src="https://github.com/user-attachments/assets/beeb2a1c-6664-4bf0-8c4b-1aadd8b96a9e" />
