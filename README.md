@@ -26,6 +26,7 @@ Four weather conditions, each changing the sky's mood and star visibility:
 | **Cloudy** | 5 drifting cloud formations, slightly dimmed stars | 75% |
 | **Foggy** | 4 drifting fog blobs + 2 clouds, stars significantly dimmed | 50% |
 | **Stormy** | 8 heavy clouds + rain + lightning bolts + fog, stars barely visible | 35% |
+
 Weather isn't just decorative — it changes how difficult it is to see the stars even after parting the light pollution. Stormy weather creates a double challenge: you must clear the city light and contend with the storm.
 
 ## Ambient sound (Web Audio API)
