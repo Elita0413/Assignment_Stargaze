@@ -19,3 +19,18 @@ Three-layer canvas system
 - Weather layer: Clouds, fog, rain drops, and lightning bolts — overlay effects that transform the sky's atmosphere.
 
 ## Weather system
+Weather
+Visual effects
+Star visibility
+Clear
+Deep black-blue sky, full star visibility
+100%
+Cloudy
+5 drifting cloud formations, slightly dimmed stars
+75%
+Foggy
+4 drifting fog blobs + 2 clouds, stars significantly dimmed
+50%
+Stormy
+8 heavy clouds + rain + lightning bolts + fog, stars barely visible
+35%
