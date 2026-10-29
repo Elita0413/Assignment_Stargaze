@@ -46,3 +46,11 @@ The master gain starts at 0 and fades to 0.7 over 1.5 seconds when sound is turn
 The sound toggle button has a pulsing animation when active, and the keyboard shortcut S toggles it.
 
 ## User Trial
+I asked one person to try the experience before I explained it. Here is what I observed:
+- First instinct: They clicked "Look up" and immediately started moving the mouse around on their own — they said they wanted to "see what changes." No hesitation about what to do.
+- Core concept: The idea that stars were hidden underneath the light pollution was not instantly obvious. It took a moment for them to realise what was happening, but once they understood, they said it became "very easy to understand." The initial ambiguity wasn't a blocker — it was more like a small "aha" moment.
+- Modes: None of the three interaction modes confused them. They tried them and understood the differences without needing explanation.
+- Feedback visibility: They did not notice the narrative text appearing on the left side, nor did they register the star counter or sky-cleared percentage. Their attention was entirely on the central canvas where the light and stars were moving.
+- Weather: They tried switching between weather conditions and found it "interesting" and "more realistic." They noticed that different weather changed how visible the stars were. This confirmed the weather system reads as a meaningful atmospheric change, not just a colour swap.
+- Sound: They did not turn on the sound during the trial. The sound toggle was not discovered on their own.
+- Overall feeling: After the trial, they described the experience as "relaxing."
