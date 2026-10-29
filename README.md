@@ -1,1 +1,3 @@
-
+STARGAZE — Reveal the Hidden Sky
+An interactive experience about light pollution. A layer of glowing particles represents the city's light pollution — a veil that hides the night sky. Move your cursor to part the light, revealing the stars beneath. Click to scatter it. Watch shooting stars drift by. Switch between four weather conditions — clear, cloudy, foggy, stormy — each transforming the sky's atmosphere. Turn on the ambient soundscape for a procedurally generated drone that deepens the meditative mood. As you reveal more of the sky, narrative fragments appear — reminders of what we've lost to light pollution.
+No frameworks. No dependencies. No audio files. Pure HTML5 Canvas, vanilla JavaScript, and the Web Audio API.
